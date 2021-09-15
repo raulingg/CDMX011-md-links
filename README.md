@@ -7,11 +7,10 @@
 * [3. Objetivos de aprendizaje](#3-objetivos-de-aprendizaje)
 * [4. Consideraciones generales](#4-consideraciones-generales)
 * [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)
-* [6. Entregables](#6-entregables)
-* [7. Hacker edition](#7-hacker-edition)
-* [8. Pistas, tips y lecturas complementarias](#8-pistas-tips-y-lecturas-complementarias)
-* [9. Checklist](#9-checklist)
-* [10. Achicando el problema](#10-achicando-el-problema)
+* [6. Hacker edition](#6-hacker-edition)
+* [7. Pistas, tips y lecturas complementarias](#7-pistas-tips-y-lecturas-complementarias)
+* [8. Checklist](#8-checklist)
+* [9. Achicando el problema](#9-achicando-el-problema)
 
 ***
 
@@ -207,12 +206,6 @@ Reflexiona y luego marca los objetivos que has llegado a entender y aplicar en t
 
 - [ ] **GitHub: Creación de cuenta y repos, configuración de llaves SSH**
 
-- [ ] **GitHub: Despliegue con GitHub Pages**
-
-  <details><summary>Links</summary><p>
-
-  * [Sitio oficial de GitHub Pages](https://pages.github.com/)
-</p></details>
 
 - [ ] **GitHub: Colaboración en Github (branches | forks | pull requests | code review | tags)**
 
@@ -244,20 +237,9 @@ Reflexiona y luego marca los objetivos que has llegado a entender y aplicar en t
   CLI) deben estar implementados en JavaScript para ser ejecutados con
   Node.js. **Está permitido usar librerías externas**.
 
-* Tu módulo **debe ser instalable** via `npm install <github-user>/md-links`. Este
-  módulo debe incluir tanto un _ejecutable_ que podamos invocar en la línea de
-  comando como una interfaz que podamos importar con `require` para usarlo
-  programáticamente.
-
 * Los **tests unitarios** deben cubrir un mínimo del 70% de _statements_,
   _functions_, _lines_ y _branches_. Te recomendamos explorar [Jest](https://jestjs.io/)
   para tus pruebas unitarias.
-
-* Para este proyecto **no está permitido** utilizar `async/await`.
-
-* Para este proyecto es **opcional** el uso de ES Modules `(import/export)`, en el
-  caso optes utilizarlo deberás de crear un script de `build` en el `package.json`
-  que los transforme en `requires` y `module.exports` con ayuda de **babel**.
 
 ## 5. Criterios de aceptación mínimos del proyecto
 
@@ -416,13 +398,8 @@ Unique: 3
 Broken: 1
 ```
 
-## 6. Entregables
 
-Módulo instalable via `npm install <github-user>/md-links`. Este módulo debe
-incluir tanto **un ejecutable** como **una interfaz** que podamos importar con `require`
-para usarlo programáticamente.
-
-## 7. Hacker edition
+## 6. Hacker edition
 
 Las secciones llamadas _Hacker Edition_ son **opcionales**. Si **terminaste**
 con todo lo anterior y te queda tiempo, intenta completarlas. Así podrás
@@ -431,15 +408,18 @@ profundizar y/o ejercitar más sobre los objetivos de aprendizaje del proyecto.
 * Puedes agregar la propiedad `line` a cada objeto `link` indicando en qué línea
   del archivo se encontró el link.
 * Puedes agregar más estadísticas.
+* Módulo instalable via `npm install <github-user>/md-links`. Este módulo debe
+incluir tanto **un ejecutable** como **una interfaz** que podamos importar con `require`
+para usarlo programáticamente.
 * Integración continua con Travis o Circle CI.
 
 ***
 
-## 8. Pistas, tips y lecturas complementarias
+## 7. Pistas, tips y lecturas complementarias
 
 ### FAQs
 
-#### ¿Cómo hago para que mi módulo sea _instalable_ desde GitHub?
+#### ¿Cómo hago en la hacker edition para que mi módulo sea _instalable_ desde GitHub?
 
 Para que el módulo sea instalable desde GitHub solo tiene que:
 
@@ -507,11 +487,7 @@ si tienes dudas existenciales con respecto a estas decisiones. No existe una
 * [Path](https://nodejs.org/api/path.html)
 * [Linea de comando CLI](https://medium.com/netscape/a-guide-to-create-a-nodejs-command-line-package-c2166ad0452e)
 
-## 9. Checklist
-
-### General
-
-* [ ] Puede instalarse via `npm install --global <github-user>/md-links`
+## 8. Checklist
 
 ### `README.md`
 
@@ -539,7 +515,7 @@ si tienes dudas existenciales con respecto a estas decisiones. No existe una
   lines, y branches.
 * [ ] Pasa tests (y linters) (`npm test`).
 
-## 10. Achicando el problema
+## 9. Achicando el problema
 
 Un "superpoder" que esperamos puedas desarrollar durante el bootcamp
 es el de definir "mini-proyectos" que te acerquen paso a paso a
