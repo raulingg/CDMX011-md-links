@@ -17,15 +17,16 @@ let filesMD=[];
             if(path.extname(file).length == 0){
                 let carpeta;
                 carpeta=(pathFromCli+'\\'+file);
+                
                 toReadDirectory(carpeta);
-               
             }
          
       })
     //   console.log(filesMD)//objeto
 
-      //llamar funcion para leer cada file
+    //   llamar funcion para leer kcada file
       filesMD.forEach(url =>{
+        //   console.log(url)
           toReadFile(url)
       })
 })

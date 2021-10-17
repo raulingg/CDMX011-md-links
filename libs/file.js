@@ -1,17 +1,18 @@
-import { rejects } from 'assert';
-import fs from 'fs';
-import path, { resolve } from 'path';
 
+import fs from 'fs';
+import path from 'path';
 
 
 export const toReadFile = (pathFromCli) => {
-    let arr = [];
+    const pathExt = path.extname(pathFromCli);
     //lee archivo con ext .md
-    if (path.extname(pathFromCli) == '.md') {
+
+    if (pathExt == '.md' | pathExt == '.markdown' | pathExt == '.mkdn' | pathExt == '.mdown') {
 
         const content = fs.readFileSync(pathFromCli, 'utf8')
-        // findUrl(content);
-         return console.log(fs.readFileSync(pathFromCli, 'utf8'))
+        // console.log(pathFromCli)
+        findUrl(pathFromCli, content);
+        //  return console.log(fs.readFileSync(pathFromCli, 'utf8'))
 
     } else {
         console.log('Extencion de archivo no valida');
@@ -19,15 +20,34 @@ export const toReadFile = (pathFromCli) => {
 }
 
 
-const findUrl = (content) => {
-    console.log(typeof content)
-    let texto="[Markdown](https://es.wikipedia.org/wiki/Markdown) es un lenguaje de marcado ligero muy popular entre developers. Es usado en muchísimas plataformas que manejan texto plano (GitHub, foros, blogs, ...), y es muy común";
-     let expresion=/^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
 
-    // return console.log(texto.test(expresion))
+const findUrl = (pathFromCli, content) => {
+    let urlToAnalise = [];
+    let marckdownUlr = /\[(.*)\]\((https?)\:\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?\)/gi;
+    let urlTittle = /\[(.*)\]/gi;//obtener title 
+    let urlPath = /(https?)\:\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?/gi;//obtener path
+
+    let getUrl = content.match(marckdownUlr);
+
+    if (getUrl !== null) {
+        getUrl.forEach(elementos => {
+            let urlObject = {};
+            urlObject['Title'] = elementos.match(urlTittle).toString();
+            urlObject['Url'] = elementos.match(urlPath).toString();
+            urlObject['path'] = pathFromCli;
+            
+            urlToAnalise.push(urlObject);
+            
+        })
+
+        return urlToAnalise
+    }
 
 }
 
+const htmlRequest = () => {
+
+}
 
 
 
