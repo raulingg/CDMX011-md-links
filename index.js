@@ -1,28 +1,53 @@
-//consideracion si se pasa una carpeta no debe tener espacios su nombre
+
+import chalk from 'chalk';
+
+import figlet from 'figlet'
 import fs from 'fs';
-import {toReadFile} from './libs/file.js'
-import {absolutePath} from './libs/ruta.js'
-import {toReadDirectory} from './libs/directory.js'
+import { toReadFile } from './libs/file.js';
+import { absolutePath } from './libs/ruta.js';
+import { toReadDirectory } from './libs/directory.js';
 
+const pathCli = absolutePath(process.argv[2]);
+export const validateOrStats= process.argv[3];
+// export const validateAndStats= process.argv[4];
+// console.log(validateOrStats);
+console.log(chalk.blue(figlet . textSync ( 'Md-Links' ,  { 
+  font: 'Ghost',
+  horizontalLayout: 'default',
+  verticalLayout: 'default',
+  width: 100,
+  whitespaceBreak : true 
+} ) ));
 
-const pathCli=absolutePath(process.argv[2]);
-
-
-   fs.stat(pathCli, (err, stats)=>{
-    if(err){
-        return console.log(err.message);
-    }
-  
-    if(stats.isFile()){
-      console.log('file')
-      toReadFile(pathCli)
-    }else if(stats.isDirectory()){
-      // console.log(path.basename(pathCli))
-     toReadDirectory(pathCli);
-    }
-  
-  });
-
-  export const mdLink=()=>{
-
+fs.stat(pathCli, (err, stats) => {
+  if (err) {
+    return console.log(err.message);
   }
+
+  if (stats.isFile()) {
+    // console.log('file')
+    toReadFile(pathCli)
+  } else if (stats.isDirectory()) {
+    // console.log(path.basename(pathCli))
+    toReadDirectory(pathCli);
+  }
+});
+
+// mdLink();
+
+
+// export const mdLink = () => {
+//   return fs.stat(pathCli, (err, stats) => {
+//     if (err) {
+//       return console.log(err.message);
+//     }
+  
+//     if (stats.isFile()) {
+//       // console.log('file')
+//       toReadFile(pathCli)
+//     } else if (stats.isDirectory()) {
+//       // console.log(path.basename(pathCli))
+//       toReadDirectory(pathCli);
+//     }
+//   });
+// }
