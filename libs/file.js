@@ -1,7 +1,8 @@
-import  fetch from "node-fetch";
 import fs from 'fs';
 import path from 'path';
 import {htttpRequest} from './HtmlRequest.js';
+// import { mdLink } from './mdLinks.js';
+// import { mdLink } from "../index.js";
 import {validateFalse, validateTrue, statusOption, statusAndValidate} from './metricas.js';
 import {validateOrStats} from '../index.js';
 
@@ -13,11 +14,12 @@ export const toReadFile = (pathFromCli) => {
 
         const content = fs.readFileSync(pathFromCli, 'utf8')
         // console.log(pathFromCli)
-       return findUrl(pathFromCli, content);
+        findUrl(pathFromCli, content);
         //  return console.log(fs.readFileSync(pathFromCli, 'utf8'))
 
     } else {
-       return  "Extension de archivo no valida";
+        let mensaje= "Extension de archivo no valida"
+       return mensaje;
     }
 }
 
@@ -39,40 +41,39 @@ const findUrl = (pathFromCli, content) => {
             urlObject['Path'] = pathFromCli;
             urlObject['Status']='';
             urlObject['StatusText']='';
-            
             urlToAnalise.push(urlObject);
             
         })
 
         // return console.log(urlToAnalise)
         // console.log(htttpRequest(urlToAnalise))
-        return htttpRequest(urlToAnalise)
+          htttpRequest(urlToAnalise)
         .then((data)=>{
-            
+            //  mdLink(pathFromCli,data)
              switch(validateOrStats){ 
                  
                 case '--validate:true':
-                validateTrue(pathFromCli,data)
+                    return validateTrue(pathFromCli,data)
                 break;
 
                 case '--validate:false':
-                validateFalse(pathFromCli,data);
+                return validateFalse(pathFromCli,data);
                 break;
 
                 case '--stats':
-                statusOption(pathFromCli, data);
+                return statusOption(pathFromCli, data);
                 break;
 
                 case '--stats-validate':
-                statusAndValidate(pathFromCli,data);
+                return statusAndValidate(pathFromCli,data);
                 break;
 
                 case '--validate-stats':
-                statusAndValidate(pathFromCli,data);
+                return statusAndValidate(pathFromCli,data);
                 break;
 
                 default:
-                console.log('Ingrese comando valido\n--validate:true\n--validate:false\n--stats \n--stats-validate \n--validate-stats');
+               return console.log('Ingrese comando valido\n--validate:true\n--validate:false\n--stats \n--stats-validate \n--validate-stats');
                 break;
                 
             }

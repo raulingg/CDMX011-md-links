@@ -14,8 +14,7 @@ export const toReadDirectory = (pathFromCli) => {
       }
 //ingnora otras extenciones 
            if (path.extname(file).length == 0) {//se realiza este if para que se asegure que es carpeta ya que si se coloca un else podrian caes los archivos con otra extencion
-              let carpeta;
-              carpeta = (pathFromCli + '\\' + file);
+              let carpeta = (pathFromCli + '\\' + file);
               toReadDirectory(carpeta);
       }
     })

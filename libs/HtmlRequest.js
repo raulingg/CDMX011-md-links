@@ -1,9 +1,9 @@
 import  fetch from "node-fetch";
 
-export const htttpRequest=(urls)=>{//retornara una promesa
+export const htttpRequest=(objectUrls)=>{//retornara una promesa
   
     return new Promise ((resolve, reject)=>{
-        const allUrlInfo= urls.map(objectToAnalice => {
+        const allUrlInfo= objectUrls.map(objectToAnalice => {
             return  fetch(objectToAnalice.Url)
             .then( (response) =>{
                 objectToAnalice.Status=response.status;
@@ -15,7 +15,7 @@ export const htttpRequest=(urls)=>{//retornara una promesa
         })
    
     Promise.all(allUrlInfo)
-    .then(()=>resolve(urls))
+    .then(()=>resolve(objectUrls))
     .catch(()=>{
         reject(new Error('No se analizaron los URL'))
     })
