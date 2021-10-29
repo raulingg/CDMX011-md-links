@@ -53,27 +53,27 @@ const findUrl = (pathFromCli, content) => {
              switch(validateOrStats){ 
                  
                 case '--validate:true':
-                    return validateTrue(pathFromCli,data)
+                   validateTrue(pathFromCli,data)
                 break;
 
                 case '--validate:false':
-                return validateFalse(pathFromCli,data);
+                validateFalse(pathFromCli,data);
                 break;
 
                 case '--stats':
-                return statusOption(pathFromCli, data);
+                 statusOption(pathFromCli, data);
                 break;
 
                 case '--stats-validate':
-                return statusAndValidate(pathFromCli,data);
+                 statusAndValidate(pathFromCli,data);
                 break;
 
                 case '--validate-stats':
-                return statusAndValidate(pathFromCli,data);
+                statusAndValidate(pathFromCli,data);
                 break;
 
                 default:
-               return console.log('Ingrese comando valido\n--validate:true\n--validate:false\n--stats \n--stats-validate \n--validate-stats');
+                console.log('Ingrese comando valido\n--validate:true\n--validate:false\n--stats \n--stats-validate \n--validate-stats');
                 break;
                 
             }
